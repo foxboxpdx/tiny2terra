@@ -1,0 +1,22 @@
+[package]
+name = "tiny2terra"
+version = "0.4.11"
+authors = ["Fox Box <foxboxpdx@gmail.com>"]
+description = "Convert TinyDNS/DJBDNS zone files into Route53 Terraform format"
+publish = false
+license = "Apache-2.0"
+
+[dependencies]
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+clap = "~2.32.0"
+
+[dev-dependencies]
+assert_cli = "0.6.3"
+
+[package.metadata.rpm.cargo]
+buildflags = ["--release"]
+
+[package.metadata.rpm.targets]
+tiny2terra = { path = "/usr/bin/tiny2terra" }

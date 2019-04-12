@@ -1,0 +1,4 @@
++foo.example.com:1.2.3.4:600
+^4.3.2.1.in-addr.arpa:foo.example.com:600
+Cbar.example.com:foo.example.com:600
+'txt.example.com:Some text string:600
