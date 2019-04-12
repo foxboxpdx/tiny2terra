@@ -98,7 +98,8 @@ Rust 1.22.1+
 
 ##### Credits
 Original Concept: djbdns2terraform (https://github.com/dpetzold/djbdns2terraform.git)
-Rust translation Daniel Fox <daniel.fox@nike.com>
+
+Rust translation FoxBox <foxboxpdx@gmail.com>
 
 ##### Version
 0.4.11 11-April-2019
