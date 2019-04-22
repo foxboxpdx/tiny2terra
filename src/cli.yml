@@ -1,5 +1,5 @@
 name: Tiny2Terra
-author: Daniel Fox <daniel.fox@nike.com>
+author: "Fox Box <foxboxpdx@gmail.com>"
 about: Convert TinyDNS flat files to Terraform
 args:
     - input:

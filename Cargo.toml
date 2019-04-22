@@ -1,10 +1,10 @@
 [package]
 name = "tiny2terra"
 version = "0.5.1"
-authors = ["Daniel Fox <daniel.fox@nike.com>"]
+authors = ["Fox Box <foxboxpdx@gmail.com>"]
 description = "Convert TinyDNS/DJBDNS zone files into Route53 Terraform format"
 publish = false
-license = "Nike"
+license = "Apache-2.0"
 
 [dependencies]
 serde = "1.0"
