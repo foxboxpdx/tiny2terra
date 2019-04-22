@@ -3,7 +3,8 @@ extern crate serde;
 extern crate serde_json;
 
 pub mod types;
-pub mod route53_parser;
+pub mod route53;
+pub mod tinydns;
 
 // Gettin' testy with it
 #[cfg(test)]

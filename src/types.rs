@@ -1,8 +1,7 @@
 use std::collections::HashMap;
 
-// Define structs for serializing Route53 AWS Terraform JSON
 #[derive(Serialize)]
-pub struct TerraFile {
+pub struct Route53File {
   pub resource: HashMap<String, HashMap<String, Route53Record>>
 }
 
@@ -16,30 +15,15 @@ pub struct Route53Record {
   pub ttl: i32
 }
 
-// Implement a ::new to turn &strs into Strings and add a new record to the
-// records vector.
+#[derive(Debug)]
+pub struct TinyDNSRecord {
+    pub rtype: String,
+    pub fqdn: String,
+    pub target: String,
+    pub ttl: i32,
+}
+
 impl Route53Record {
-    // New takes a single string for its record and creates a new Vec<String>
-    // with it.
-    pub fn new(z: &str, n: &str, t: &str, r: &str, tl: i32) -> Route53Record {
-        let rv = vec![r.to_string()];
-        Route53Record { 
-            zone_id: z.to_string(),
-            name:    n.to_string(),
-            rtype:   t.to_string(),
-            records: rv,
-            ttl:     tl
-        }
-    }
-
-    // Push a new value into the records vector
-    pub fn add_record(&mut self, value: &str) {
-        let mut newvec = vec![value.to_string()];
-        newvec.append(&mut self.records.clone());
-        self.records = newvec;
-        //self.records.borrow_mut().push(v);
-    }
-
     // Merge the records vectors of this and another struct
     // Return false if the record types are mismatched or there's
     // any other sorts of issues with the merge
@@ -54,7 +38,6 @@ impl Route53Record {
     }
 }
 
-// Add eq/partialeq
 impl Eq for Route53Record {}
 
 impl PartialEq for Route53Record {

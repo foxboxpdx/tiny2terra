@@ -1,0 +1,43 @@
+name: Tiny2Terra
+author: "Fox Box <foxboxpdx@gmail.com>"
+about: Convert TinyDNS flat files to Terraform
+args:
+    - input:
+        short: i
+        long: input
+        value_name: FILE
+        help: TinyDNS input file to read from
+        required: true
+        takes_value: true
+    - output:
+        short: o
+        long: output
+        value_name: DIR
+        help: "Output directory for Terraform files (default: ./terraform)"
+        takes_value: true
+    - lint:
+        short: l
+        long: lint
+        help: Validate input file only, do not output or write to file(s)
+    - stdout:
+        short: s
+        long: stdout
+        help: Print Terraform output to STDOUT as well as to file(s)
+subcommands:
+    - route53:
+        about: Generate Terraform for AWS Route53 DNS
+        args:
+            - fwdzone:
+                short: f
+                long: fwdzone
+                value_name: ZONE_ID
+                help: AWS Route53 Zone ID for Forward (A/NS/MX/CNAME) records
+                required: true
+                takes_value: true
+            - ptrzone:
+                short: p
+                long: ptrzone
+                value_name: ZONE_ID
+                help: AWS Route53 Zone ID for Reverse (PTR) records
+                required: true
+                takes_value: true
