@@ -3,7 +3,8 @@ extern crate serde;
 extern crate serde_json;
 
 pub mod types;
-pub mod route53_parser;
+pub mod route53;
+pub mod tinydns;
 
 // Gettin' testy with it
 #[cfg(test)]
@@ -135,15 +136,15 @@ mod tests {
     #[test]
     fn test_r53_parse_parse_good_file() {
         let zone = "${{aws_route53_zone.foo.zone_id}}";
-        let a = Route53Record::new(&zone, "foo.example.com", "A", "1.2.3.4", 600);
-        let b = Route53Record::new(&zone, "4.3.2.1.in-addr.arpa", "PTR", "foo.example.com", 600);
-        let c = Route53Record::new(&zone, "bar.example.com", "CNAME", "foo.example.com", 600);
-        let d = Route53Record::new(&zone, "txt.example.com", "TXT", "Some text string", 600);
+        let a = Route53Record::new(&zone, "foo.nike.com", "A", "1.2.3.4", 600);
+        let b = Route53Record::new(&zone, "4.3.2.1.in-addr.arpa", "PTR", "foo.nike.com", 600);
+        let c = Route53Record::new(&zone, "bar.nike.com", "CNAME", "foo.nike.com", 600);
+        let d = Route53Record::new(&zone, "txt.nike.com", "TXT", "Some text string", 600);
         let mut good_hash = HashMap::new();
-        good_hash.insert("a-foo-example-com".to_string(), a);
+        good_hash.insert("a-foo-nike-com".to_string(), a);
         good_hash.insert("ptr-4-3-2-1-in-addr-arpa".to_string(), b);
-        good_hash.insert("cname-bar-example-com".to_string(), c);
-        good_hash.insert("txt-txt-example-com".to_string(), d);
+        good_hash.insert("cname-bar-nike-com".to_string(), c);
+        good_hash.insert("txt-txt-nike-com".to_string(), d);
         let x = route53_parser::parse("testdata", "foo").unwrap();
         assert_eq!(good_hash.len(), x.len());
     }
